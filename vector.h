@@ -19,6 +19,7 @@ namespace yiming
 		{
 			if (n > _capacity())
 			{
+				size_t oldsize = size();
 				T* tmp = new T[n];
 			//当start不为空时，拷贝旧数据到新空间
 				if (_start)
@@ -27,7 +28,7 @@ namespace yiming
 					delete[]_start;
 				}
 				_start = tmp;
-				_finish = _start + size();
+				_finish = _start + oldsize;
 				_endofstorage = _start + n;
 			}
 		}
