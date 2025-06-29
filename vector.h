@@ -1,6 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<iostream>
+#include<assert.h>
+using namespace std;
 namespace yiming
 {
 	template<class T>
@@ -8,6 +10,7 @@ namespace yiming
 	{
 	public:
 		typedef T* iterator;
+		typedef const T* const_iterator;
 		vector()
 			:_start(nullptr)
 			, _finish(nullptr)
@@ -15,9 +18,9 @@ namespace yiming
 		{
 
 		}
-		void reverse(size_t n)
+		void reserve(size_t n)
 		{
-			if (n > _capacity())
+			if (n > capacity())
 			{
 				size_t oldsize = size();
 				T* tmp = new T[n];
@@ -32,10 +35,37 @@ namespace yiming
 				_endofstorage = _start + n;
 			}
 		}
+		T& operator[](size_t i)
+		{
+			assert(i < size());
+			return  _start[i];
+		}
+		const T& operator[](size_t i)const
+		{
+			assert(i < size());
+			return _start[i];
+
+		}
+		iterator begin()
+		{
+			return _start;
+		}
+		const iterator begin()const
+		{
+			return _start;
+		}
+		iterator end()
+		{
+			return _finish;
+		}
+		const iterator end()const
+		{
+			return _finish;
+		}
 
 		size_ t size()const
 		{
-			return _finsh - _start;
+			return _finish - _start;
 		}
 		size_t capacity()const
 		{
@@ -47,14 +77,16 @@ namespace yiming
 			{
 				reserve(capacity() == 0 ? 4;capacity() * 2);
 			}
-			*_finsh = x;
+			*_finish = x;
 			++_finish;
 		}
+		void Print(vector<int>& v);
+		
 		
 		
 	private:
 		iterator _start;
-		iterator _finsh;
+		iterator _finish;
 		iterator _endofstorage;
 
 	};
