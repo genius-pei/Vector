@@ -18,6 +18,12 @@ namespace yiming
 		{
 
 		}
+		~vector() {
+			if (_start) {
+				delete[] _start;
+				_start = _finish = _endofstorage = nullptr;
+			}
+		}
 		void reserve(size_t n)
 		{
 			if (n > capacity())
@@ -27,7 +33,7 @@ namespace yiming
 			//当start不为空时，拷贝旧数据到新空间
 				if (_start)
 				{
-					memcpy(tmp, _start, sizeof(T) * _size());
+					memcpy(tmp, _start, sizeof(T) * size());
 					delete[]_start;
 				}
 				_start = tmp;
@@ -50,7 +56,7 @@ namespace yiming
 		{
 			return _start;
 		}
-		const iterator begin()const
+		const_iterator begin()const
 		{
 			return _start;
 		}
@@ -58,12 +64,12 @@ namespace yiming
 		{
 			return _finish;
 		}
-		const iterator end()const
+		const_iterator end()const
 		{
 			return _finish;
 		}
 
-		size_ t size()const
+		size_t size()const
 		{
 			return _finish - _start;
 		}
@@ -75,12 +81,16 @@ namespace yiming
 		{
 			if (_finish == _endofstorage)
 			{
-				reserve(capacity() == 0 ? 4;capacity() * 2);
+				reserve(capacity() == 0 ? 4:capacity() * 2);
 			}
 			*_finish = x;
 			++_finish;
 		}
-		void Print(vector<int>& v);
+		void pop_back()
+		{
+			_finish--;
+		}
+
 		
 		
 		
@@ -90,4 +100,5 @@ namespace yiming
 		iterator _endofstorage;
 
 	};
+	void Print(vector<int>& x);
 }
