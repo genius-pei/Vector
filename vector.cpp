@@ -7,5 +7,6 @@ void yiming::Print(yiming::vector<int>& v)
 	{
 		cout << e << " ";
 	}
+	cout << endl;
 }
 
