@@ -1,7 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include<stdio.h>
+
 #include<iostream>
 #include<assert.h>
+
 using namespace std;
 namespace yiming
 {
@@ -88,7 +89,31 @@ namespace yiming
 		}
 		void pop_back()
 		{
+			assert(_finish > _start);
 			_finish--;
+		}
+		void insert(iterator pos, const T& x) 
+		{
+			assert(pos >= _start && pos <= _finish);
+
+			size_t offset = pos - _start; // 1.保存偏移量
+
+			if (_finish == _endofstorage) {
+				size_t new_cap = capacity() ? capacity() * 2 : 4;
+				reserve(new_cap);
+				pos = _start + offset; // 2.重新计算pos
+			}
+
+			iterator new_pos = _start + offset;
+			iterator end = _finish;
+
+			// 3.正确移动元素（后->前）
+			for (; end > new_pos; --end) {
+				*end = std::move(*(end - 1)); // 移动语义提升性能
+			}
+
+			*new_pos = x; // 4.插入元素
+			++_finish;
 		}
 
 		
