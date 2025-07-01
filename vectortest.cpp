@@ -21,15 +21,12 @@ void Print(const Container& con)
 		Print(a);
 		a.pop_back();
 		Print(a);
+		//Print(a);(a);
 		//int x;
 		//cin >> x;
 		//auto it = find(a.begin(), a.end(),x);
 		//if (it != a.end())
 		//{
-		//	a.insert(it, 10);
-		//	//如果扩容会导致it失效，失效后不要使用it
-		//}
-		//Print(a);
 		a.push_back(4);
 		a.push_back(5);
 		a.push_back(6);
@@ -38,7 +35,8 @@ void Print(const Container& con)
 		auto it = find(a.begin(), a.end(),x);
 		if (it != a.end())
 		{
-			a.erase(it);//it因为不涉及扩容，后面可以修改it
+			a.erase(it);//it失效，是否报错取决于不同平台对迭代器失效的检查
+			++it;
 		}
 		Print(a);
 
