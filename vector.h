@@ -96,7 +96,7 @@ namespace yiming
 		{
 			assert(pos >= _start && pos <= _finish);
 
-			size_t offset = pos - _start; // 1.保存偏移量
+			size_t offset = pos - _start; // 1.保存偏移量，防止异地扩容导致问题
 
 			if (_finish == _endofstorage) {
 				size_t new_cap = capacity() ? capacity() * 2 : 4;
@@ -109,11 +109,22 @@ namespace yiming
 
 			// 3.正确移动元素（后->前）
 			for (; end > new_pos; --end) {
-				*end = std::move(*(end - 1)); // 移动语义提升性能
+				*end = *(end - 1); // 移动语义提升性能
 			}
 
 			*new_pos = x; // 4.插入元素
 			++_finish;
+		}
+		void erase(iterator pos)
+		{
+			assert(pos >= _start && pos <= _finish);
+			iterator it = pos + 1;
+			while (it != _finish)
+			{
+				*(it - 1) = *it;
+				it++;
+			}
+			_finish--;
 		}
 
 		
