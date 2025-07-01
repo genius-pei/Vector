@@ -11,6 +11,26 @@
 		Print(a);
 		a.pop_back();
 		Print(a);
+		//int x;
+		//cin >> x;
+		//auto it = find(a.begin(), a.end(),x);
+		//if (it != a.end())
+		//{
+		//	a.insert(it, 10);
+		//	//如果扩容会导致it失效，失效后不要使用it
+		//}
+		//Print(a);
+		a.push_back(4);
+		a.push_back(5);
+		a.push_back(6);
+		int x;
+		cin >> x;
+		auto it = find(a.begin(), a.end(),x);
+		if (it != a.end())
+		{
+			a.erase(it);//it因为不涉及扩容，后面可以修改it
+		}
+		Print(a);
 	}
 	int main()
 	{
