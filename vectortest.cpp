@@ -1,5 +1,15 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 #include"vector.h"
+template<class Container>
+void Print(const Container& con)
+{
+	for (auto e : con)
+	{
+		cout << e << " ";
+
+	}
+	cout << endl;
+}
 
 	void test01()
 	{
@@ -31,6 +41,7 @@
 			a.erase(it);//it因为不涉及扩容，后面可以修改it
 		}
 		Print(a);
+
 	}
 	int main()
 	{
