@@ -55,6 +55,18 @@ namespace yiming
 				_start = _finish = _endofstorage = nullptr;
 			}
 		}
+		void swap(vector<T>& v)
+		{
+			std::swap(_start, v._start);
+			std::swap(_finish, v._finish);
+			std::swap(_endofstorage, v._endofstorage);
+
+		}
+		vector<T>& operator=(vector<T> v)
+		{
+			swap(v);
+			return *this;
+		}
 		void reserve(size_t n)
 		{
 			if (n > capacity())
