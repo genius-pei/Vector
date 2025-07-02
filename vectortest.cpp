@@ -70,6 +70,9 @@ void Print(const Container& con)
 		Print(c);
 		yiming::vector<int> d(10, 1);
 		Print(d);
+		yiming::vector<int> f;
+		f = d;
+		Print(f);
 
 
 	}
