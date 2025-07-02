@@ -42,6 +42,23 @@ namespace yiming
 				_endofstorage = _start + n;
 			}
 		}
+		void resize(size_t n,T val=T())//模版如何给缺省值？使用匿名对象，其缺省值就是T类型的默认构造的值
+		{
+			if (n > size())//插入
+			{
+				reserve(n);
+				while (_finish != _start + n)
+				{
+					*_finish = val;
+					_finish++;
+				}
+			}
+			else//删除数据
+			{
+				_finish = _start + n;
+			}
+			
+		}
 		T& operator[](size_t i)
 		{
 			assert(i < size());
@@ -52,6 +69,10 @@ namespace yiming
 			assert(i < size());
 			return _start[i];
 
+		}
+		void clear()
+		{
+			_finish = _start;
 		}
 		iterator begin()
 		{
