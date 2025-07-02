@@ -19,16 +19,35 @@ namespace yiming
 		{
 
 		}
+		vector(initializer_list <T> il)
+		{
+			reserve(il.size());
+			for (auto& e : il)
+			{
+				push_back(e);
+			}
+		}
 		vector(const vector<T>& x)
-			:_start(nullptr)
-			, _finish(nullptr)
-			, _endofstorage(nullptr)
 		{
 			reserve(x.capacity());
 			for (auto& e : x)
 			{
 				push_back(e);
 			}
+		}
+		template <class inputiterator>//使用模版就可以使用其他类型的迭代器，不仅仅能使用vector的
+		vector(inputiterator start, inputiterator finish)
+		{
+			while (start!=finish)
+			{
+				push_back(*start);
+				++start;
+			}
+		
+		}
+		vector(int n, T val = T())
+		{
+			resize(n,val);
 		}
 		~vector() {
 			if (_start) {
