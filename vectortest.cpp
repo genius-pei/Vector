@@ -41,8 +41,15 @@ void Print(const Container& con)
 		Print(a);
 
 	}
+	void test02()
+	{
+		yiming::vector<int> a;
+		a.resize(10,20);
+		Print(a);
+	}
 	int main()
 	{
-		test01();
+		//test01();
+		test02();
 		return 0;
 	}
