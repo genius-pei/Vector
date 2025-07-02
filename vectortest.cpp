@@ -59,10 +59,26 @@ void Print(const Container& con)
 		Print(a2);
 
 	}
+	void test04()
+	{
+		yiming::vector<int> a = { 1,2,3 };
+		Print(a);
+		yiming::vector<int> b(a.begin(), a.end());
+		string s1("hello world");
+		yiming::vector<char> c(s1.begin(), s1.end());
+		Print(b);
+		Print(c);
+		yiming::vector<int> d(10, 1);
+		Print(d);
+
+
+	}
+	
 	int main()
 	{
 		//test01();
 		//test02();
-		test03();
+		//test03();
+		test04();
 		return 0;
 	}
