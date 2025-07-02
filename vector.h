@@ -19,6 +19,17 @@ namespace yiming
 		{
 
 		}
+		vector(const vector<T>& x)
+			:_start(nullptr)
+			, _finish(nullptr)
+			, _endofstorage(nullptr)
+		{
+			reserve(x.capacity());
+			for (auto& e : x)
+			{
+				push_back(e);
+			}
+		}
 		~vector() {
 			if (_start) {
 				delete[] _start;
@@ -152,9 +163,9 @@ namespace yiming
 		
 		
 	private:
-		iterator _start;
-		iterator _finish;
-		iterator _endofstorage;
+		iterator _start=nullptr;
+		iterator _finish=nullptr;
+		iterator _endofstorage=nullptr;
 
 	};
 	void Print(vector<int>& x);
