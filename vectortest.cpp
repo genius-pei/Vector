@@ -73,7 +73,15 @@ void Print(const Container& con)
 		//yiming::vector<int> f;
 		//f = d;
 		//Print(f);
-
+	}
+	void test05()
+	{
+		yiming::vector<string> v1;
+		v1.push_back("11111111");
+		v1.push_back("11111111");
+		v1.push_back("11111111");
+		v1.push_back("11111111");
+		Print(v1);
 
 	}
 	
@@ -82,6 +90,7 @@ void Print(const Container& con)
 		//test01();
 		//test02();
 		//test03();
-		test04();
+		//test04();
+		test05();
 		return 0;
 	}
