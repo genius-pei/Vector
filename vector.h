@@ -76,7 +76,11 @@ namespace yiming
 			//当start不为空时，拷贝旧数据到新空间
 				if (_start)
 				{
-					memcpy(tmp, _start, sizeof(T) * size());
+					//memcpy(tmp, _start, sizeof(T) * oldsize);//memcpy按字节拷贝,且没有
+					for (size_t i = 0;i < oldsize;i++)
+					{
+						tmp[i] = _start[i];
+					}
 					delete[]_start;
 				}
 				_start = tmp;
