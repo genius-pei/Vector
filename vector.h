@@ -203,5 +203,5 @@ namespace yiming
 		iterator _endofstorage=nullptr;
 
 	};
-	void Print(vector<int>& x);
+	
 }
